@@ -30,25 +30,11 @@ function montaTr(paciente) {
     var pacienteTr = document.createElement("tr");
     pacienteTr.classList.add("paciente");
 
-    var nomeTd = document.createElement("td"); //Seta a variável do paciente
-    nomeTd.classList.add("info-nome") // Seta a classe para a variável
-    nomeTd.textContent = paciente.nome; //Seta o conteúdo que sera preenchido
-
-    var pesoTd = document.createElement("td");
-    pesoTd.classList.add("info-peso")
-    pesoTd.textContent = paciente.peso;
-
-    var alturaTd = document.createElement("td");
-    alturaTd.classList.add("info-altura")
-    alturaTd.textContent = paciente.altura;
-
-    var gorduraTd = document.createElement("td");
-    gorduraTd.classList.add("info-gordura")
-    gorduraTd.textContent = paciente.gordura;
-
-    var imcTd = document.createElement("td");
-    imcTd.classList.add("info-imc")
-    imcTd.textContent = paciente.imc;
+    var nomeTd = montaTd(paciente.nome, "info-nome");
+    var pesoTd = montaTd(paciente.peso, "info-peso");
+    var alturaTd = montaTd(paciente.altura, "info-altura");
+    var gorduraTd = montaTd(paciente.gordura, "info-gordura");
+    var imcTd = montaTd(paciente.imc, "info-imc");
     
     pacienteTr.appendChild(nomeTd);
     pacienteTr.appendChild(pesoTd);
@@ -57,4 +43,12 @@ function montaTr(paciente) {
     pacienteTr.appendChild(imcTd);
 
     return pacienteTr;
+}
+
+function montaTd(dado, classe) {
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);
+
+    return td;
 }
